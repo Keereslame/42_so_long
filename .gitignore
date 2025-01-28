@@ -1,0 +1,12 @@
+libft/.DS_Store
+libft/.vscode/c_cpp_properties.json
+libft/.vscode/settings.json
+libft/include/.DS_Store
+libft/src/.DS_Store
+libft/src/ft_is/.DS_Store
+libft/src/ft_lst/.DS_Store
+libft/src/ft_mem/.DS_Store
+libft/src/ft_printf/.DS_Store
+libft/src/ft_put/.DS_Store
+libft/src/ft_str/.DS_Store
+libft/src/ft_to/.DS_Store
