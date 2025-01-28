@@ -6,20 +6,37 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 13:21:40 by alfavre           #+#    #+#              #
-#    Updated: 2025/01/28 13:23:06 by alfavre          ###   ########.fr        #
+#    Updated: 2025/01/28 14:49:06 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#############################################################################
+#							Check environnement								#
+#############################################################################
+ifeq ($(shell uname), Linux)
+	INCLUDES = -I/usr/include -Imlx
+else
+	INCLUDES = -I/opt/X11/include -Imlx
+endif
 
 #############################################################################
 #								Variables									#
 #############################################################################
 NAME = so_long
-LIBFT = ./libft
-MINI_LIBX = ./minilibx-linux
+LIBFT = ./libft/libft.a
 SRC_DIR = src/
 OBJ_DIR = obj/
-CFLAGS = -g -Wall -Wextra -Werror -Iinclude
-
+INC = -Iinclude -Ilibft -Imlx
+LIB = -Llibft -Lmlx -lmlx -lXext -lX11 -lm -lbsd
+CC = gcc
+FLAGS = -g -Wall -Wextra -Werror
+MLX_DIR = ./mlx
+MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
+ifeq ($(shell uname), Linux)
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
+else
+	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+endif
 #############################################################################
 #									Sources									#
 #############################################################################
@@ -33,27 +50,37 @@ OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 #############################################################################
 OBJF = .cache_exists
 
-all: $(NAME)
-$(NAME): $(OBJ)
-	make -C $(LIBFT)
-	cc $(CFLAGS) $(OBJ) $(LIBFT)/libft.a -o $(NAME)
-	@echo "so_long compiled!"
+all: $(MLX_LIB) $(LIBFT) $(OBJF) $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@echo "Compiling $<"
-	cc $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@ $(INC)
+
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJ) $(LIB)
+
+$(MLX_LIB):
+	@echo " [ .. ] | Compiling mlx.."
+	make -C $(MLX_DIR)
+	@echo " [ OK ] | mlx ready!"
+
+$(LIBFT):
+	@echo " [ .. ] | Compiling libft.."
+	make -s -C libft
+	@echo " [ OK ] | Libft ready!"
 
 $(OBJF):
 	mkdir -p $(OBJ_DIR)
 
 clean:
+	make -s $@ -C libft
 	rm -rf $(OBJ_DIR)
-	make clean -C $(LIBFT)
+	@echo "object files removed."
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(LIBFT)/libft.a
-	make fclean -C $(LIBFT)
+	make -s $@ -C libft
+	rm -rf $(NAME)
+	@echo "binary file removed."
 
 re: fclean all
 
