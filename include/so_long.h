@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/01/28 14:51:11 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/01/28 15:43:43 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define SO_LONG_H
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
+
+typedef struct s_map
+{
+	int	high;
+	int	length;
+	int	pos_x;
+	int	pos_y;
+}	t_map;
 
 typedef struct s_data
 {
