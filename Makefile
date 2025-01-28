@@ -6,7 +6,7 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 13:21:40 by alfavre           #+#    #+#              #
-#    Updated: 2025/01/28 14:49:06 by alfavre          ###   ########.fr        #
+#    Updated: 2025/01/28 15:02:44 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ $(OBJF):
 
 clean:
 	make -s $@ -C libft
+	make -s $@ -C $(MLX_DIR)
 	rm -rf $(OBJ_DIR)
 	@echo "object files removed."
 
