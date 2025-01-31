@@ -6,7 +6,7 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 13:21:40 by alfavre           #+#    #+#              #
-#    Updated: 2025/01/28 15:02:44 by alfavre          ###   ########.fr        #
+#    Updated: 2025/01/31 10:38:50 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIBFT = ./libft/libft.a
 SRC_DIR = src/
 OBJ_DIR = obj/
 INC = -Iinclude -Ilibft -Imlx
-LIB = -Llibft -Lmlx -lmlx -lXext -lX11 -lm -lbsd
+LIB = -Llibft -lft -Lmlx -lmlx -lXext -lX11 -lm -lbsd
 CC = gcc
 FLAGS = -g -Wall -Wextra -Werror
 MLX_DIR = ./mlx
@@ -41,6 +41,7 @@ endif
 #									Sources									#
 #############################################################################
 SRC_FILES = main \
+			events
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
