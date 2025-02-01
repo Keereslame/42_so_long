@@ -6,17 +6,21 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/01/31 10:12:23 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/01 18:56:18 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	data.mlx_ptr = mlx_init();
+	(void)argv;
+	(void)argc;
+	ft_bzero(&data, sizeof(t_data));
+	return (check_map("/home/alfavre/Documents/42_Lausanne/42_so_long/map/map1.ber", &data));
+	/*data.mlx_ptr = mlx_init();
 	if (!(data.mlx_ptr))
 		return (perror("Mlx init() failed"), 1);
 	data.win_ptr = mlx_new_window(data.mlx_ptr, 500, 500, "so_long");
@@ -25,5 +29,5 @@ int	main(void)
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
-	return (0);
+	return (0);*/
 }

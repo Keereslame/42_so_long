@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/01/31 10:25:58 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/01 17:02:14 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "../libft/include/libft.h"
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
+# include <fcntl.h>
 
 typedef struct s_position
 {
@@ -38,25 +39,31 @@ typedef struct s_exit
 {
 	t_position	position;
 	void		*sprite;
+	char		state; //open(1) or close(0)
 }	t_exit;
 
 typedef struct s_map
 {
-	int				height;
-	int				width;
-	t_collectible	*collectibles;
-	t_exit			exit;
+	size_t	height;
+	size_t	width;
+	char	**values;
+	int		nb_collectible;
+	int		nb_player;
+	int		nb_exit;
 }	t_map;
 
 typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*sprites[5];
-	t_map	*map;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_map			map;
+	t_collectible	collectibles;
+	t_player		player;
+	t_exit			exit;
 }	t_data;
 
 int	on_destroy(t_data *data);
 int	on_keypress(int key_sym, t_data *data);
+int	check_map(char *file, t_data *data);
 
 #endif
