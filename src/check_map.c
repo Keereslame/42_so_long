@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:02:54 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/01 19:00:19 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:44:12 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,34 @@
 static void	create_map(t_data *data, size_t height, size_t width)
 {
 	t_map	map;
-	size_t	i;
-	size_t	j;
 
-	i = 0;
-	j = 0;
 	map.height = height;
 	map.nb_collectible = 0;
 	map.nb_exit = 0;
 	map.nb_player = 0;
 	map.width = width;
-	map.values = malloc(sizeof(char) * (width * height));
-	while (i < height)
-	{
-		while (j < width)
-		{
-			map.values[i][j] = malloc(sizeof(char) * 1);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
+	map.values = malloc(sizeof(char *) * height);
 	data->map = map;
 }
 
 static void	map_init(char *file, t_data *data)
 {
 	char	*buffer;
-	size_t	height;
-	int		i;
+	size_t	i;
 	int		fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		perror("Error to open the map's file");
-	height = 0;
 	i = 0;
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		while (*buffer)
-			data->map.values[height][i++] = *(buffer++);
-		height++;
+		data->map.values[i] = ft_strdup(buffer);
+		i++;
+		free(buffer);
 		buffer = get_next_line(fd);
 	}
-	data->map.height = height;
 	close(fd);
 }
 
@@ -80,13 +63,22 @@ static void	print_map(t_data *data)
 	}
 }
 
-int	check_map(char *file, t_data *data)
+void	free_map(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < data->map.height)
+		free(data->map.values[i++]);
+	free(data->map.values);
+}
+
+void	check_map(char *file, t_data *data)
 {
 	int		fd;
 	char	*buffer;
 	size_t	height;
 	size_t	width;
-	size_t	temp_width;
 
 	height = 0;
 	width = 0;
@@ -96,24 +88,22 @@ int	check_map(char *file, t_data *data)
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		height++;
 		if (!width)
 			width = ft_strlen(buffer) - 1;
 		else
 		{
-			temp_width = ft_strlen(buffer)- 1;
-			if (width != temp_width)
+			if (width != (ft_strlen(buffer)- 1))
 			{
 				ft_printf("This is not a rectangle");
-				free(data->map.values);
-				return (0);
+				return ;
 			}
 		}
+		height++;
+		free(buffer);
 		buffer = get_next_line(fd);
 	}
 	close(fd);
 	create_map(data, height, width);
 	map_init(file, data);
 	print_map(data);
-	return (0);
 }

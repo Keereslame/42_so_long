@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/01 17:02:14 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 11:30:09 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ typedef struct s_data
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_map			map;
-	t_collectible	collectibles;
+	t_collectible	*collectibles;
 	t_player		player;
 	t_exit			exit;
 }	t_data;
 
-int	on_destroy(t_data *data);
-int	on_keypress(int key_sym, t_data *data);
-int	check_map(char *file, t_data *data);
+int		on_destroy(t_data *data);
+int		on_keypress(int key_sym, t_data *data);
+void	check_map(char *file, t_data *data);
+void	free_map(t_data *data);
 
 #endif
