@@ -6,29 +6,23 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/02 17:09:14 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:32:47 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	game_init()
-{
-	create_map(data, height, width);
-	map_init(file, data);
-	print_map(data);
-}
-
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_game	game;
 
 	(void)argv;
 	(void)argc;
-	ft_bzero(&data, sizeof(t_data));
-	init_map(&data);
-	check_map("/home/alfavre/Documents/42_github/42_so_long/map/map1.ber", &data);
-	free_map(&data);
+	if (!read_map(&game, "/home/alfavre/Documents/42_Lausanne/42_so_long/map/map1.ber"))
+	{
+		ft_printf("Error\nInvalid map\n");
+		return (1);
+	}
 	return (0);
 	/*data.mlx_ptr = mlx_init();
 	if (!(data.mlx_ptr))
