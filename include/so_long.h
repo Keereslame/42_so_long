@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/02 11:30:09 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 16:14:40 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ int		on_destroy(t_data *data);
 int		on_keypress(int key_sym, t_data *data);
 void	check_map(char *file, t_data *data);
 void	free_map(t_data *data);
+void	create_map(t_data *data, size_t height, size_t width);
+void	map_init(char *file, t_data *data);
+void	print_map(t_data *data);
 
 #endif
