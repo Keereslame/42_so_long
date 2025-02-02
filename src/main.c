@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/02 22:32:47 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:43:26 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nInvalid map\n");
 		return (1);
 	}
+	free_map(game.map);
 	return (0);
 	/*data.mlx_ptr = mlx_init();
 	if (!(data.mlx_ptr))
