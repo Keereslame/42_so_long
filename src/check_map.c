@@ -6,21 +6,18 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:02:54 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/02 16:11:57 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/02 17:05:46 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
-void	check_map(char *file, t_data *data)
+static void	check_rectangle(char *file, t_data *data)
 {
 	int		fd;
 	char	*buffer;
-	size_t	height;
 	size_t	width;
 
-	height = 0;
 	width = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -38,12 +35,14 @@ void	check_map(char *file, t_data *data)
 				return ;
 			}
 		}
-		height++;
 		free(buffer);
 		buffer = get_next_line(fd);
 	}
 	close(fd);
-	create_map(data, height, width);
-	map_init(file, data);
-	print_map(data);
+}
+
+void	check_map(char *file, t_data *data)
+{
+	check_rectangle(file, data);
+
 }
