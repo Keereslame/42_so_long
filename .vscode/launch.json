@@ -8,7 +8,7 @@
 		"name": "(gdb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "/home/alfavre/Documents/42_Lausanne/42_so_long/so_long",
+		"program": "/home/alfavre/Documents/42_github/42_so_long/so_long",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",

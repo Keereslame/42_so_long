@@ -6,7 +6,7 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/14 10:55:02 by alfavre           #+#    #+#              #
-#    Updated: 2024/12/25 10:31:33 by alfavre          ###   ########.fr        #
+#    Updated: 2025/02/03 09:40:03 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@
 NAME = libft.a
 SRCS_DIR = src/
 OBJS_DIR = obj/
-CFLAGS = -Wall -Wextra -Werror -I include
+CFLAGS = -g -Wall -Wextra -Werror -I include
 
 #############################################################################
 #									Sources									#

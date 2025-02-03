@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:39 by alfavre           #+#    #+#             */
-/*   Updated: 2024/12/25 10:07:53 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 10:10:09 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static char	*ft_read_file(int fd, char *buffer)
 }
 
 /**
- * @brief Fill the line to write to the output including the
- * \n if there is one.
+ * @brief Fill the line to write to the output including the \\n
+ * if there is one.
  * @param buffer The static buffer
  * @return The string to write to the output
  */
@@ -74,19 +74,21 @@ static char	*ft_fill_line(char *buffer)
 {
 	char	*line;
 	int		index;
+	int		size;
 
 	index = 0;
 	if (!buffer[index])
 		return (NULL);
 	while (buffer[index] && buffer[index] != '\n')
 		index++;
-	line = malloc(sizeof(char) * (index + 2));
+	if (buffer[index] == '\n')
+		size = index + 2;
+	else
+		size = index + 1;
+	line = malloc(sizeof(char) * size);
 	if (!line)
 		return (NULL);
-	if (buffer[index] == '\n')
-		ft_strlcpy(line, buffer, index + 2);
-	else
-		ft_strlcpy(line, buffer, index + 1);
+	ft_strlcpy(line, buffer, size);
 	return (line);
 }
 

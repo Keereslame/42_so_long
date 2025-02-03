@@ -6,7 +6,7 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 13:21:40 by alfavre           #+#    #+#              #
-#    Updated: 2025/02/02 22:43:12 by alfavre          ###   ########.fr        #
+#    Updated: 2025/02/03 10:40:48 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,20 +68,20 @@ $(MLX_LIB):
 
 $(LIBFT):
 	@echo " [ .. ] | Compiling libft.."
-	make -s -C libft
+	make -C libft
 	@echo " [ OK ] | Libft ready!"
 
 $(OBJF):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	make -s $@ -C libft
-	make -s $@ -C $(MLX_DIR)
+	make $@ -C libft
+	make $@ -C $(MLX_DIR)
 	rm -rf $(OBJ_DIR)
 	@echo "object files removed."
 
 fclean: clean
-	make -s $@ -C libft
+	make $@ -C libft
 	rm -rf $(NAME)
 	@echo "binary file removed."
 

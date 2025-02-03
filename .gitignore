@@ -10,3 +10,4 @@ libft/src/ft_printf/.DS_Store
 libft/src/ft_put/.DS_Store
 libft/src/ft_str/.DS_Store
 libft/src/ft_to/.DS_Store
+.vscode/launch.json
