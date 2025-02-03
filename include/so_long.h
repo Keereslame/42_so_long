@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 11:08:33 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:14:13 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
 # include <fcntl.h>
+
+typedef struct s_flood
+{
+	char	**map;
+	int		height;
+	int		width;
+	int		collectibles;
+	int		exit_found;
+}	t_flood;
+
 
 typedef struct s_position
 {
@@ -62,12 +72,17 @@ typedef struct s_game
 	int			nb_collectibles;
 }	t_game;
 
+
+int		create_map(t_game *game, char *filename);
+int		read_map(t_game *game, char *filename);
+int		check_map(t_game *game);
+int		validate_map(t_game *game, char *filename);
+
+void	free_map(char **map);
+void	print_map(char **map);
+int		get_map_height(char *file);
+
 int		on_destroy(t_game *data);
 int		on_keypress(int key_sym, t_game *data);
-int		create_map(t_game *game, char *filename);
-void	free_map(char **map);
-void	print_map(t_game *game);
-int		get_map_height(char *file);
-int		check_map(t_game *game);
 
 #endif

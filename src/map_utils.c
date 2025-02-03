@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:40:56 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 11:16:30 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:16:02 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_map_height(char *file)
 	height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (perror("Error to open the map's file"), 0);
+		return (perror("Error\nError to open the map's file"), 0);
 	while (1)
 	{
 		buffer = get_next_line(fd);
@@ -34,20 +34,18 @@ int	get_map_height(char *file)
 	return (height);
 }
 
-void	print_map(t_game *game)
+void	print_map(char **map)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (i < game->map_height)
+	i = -1;
+	while (map[++i])
 	{
-		while (j < game->map_width)
-			ft_printf("%c", game->map[i][j++]);
+		j = -1;
+		while (map[i][++j])
+			ft_printf("%c", map[i][j]);
 		ft_printf("\n");
-		j = 0;
-		i++;
 	}
 }
 
@@ -57,8 +55,6 @@ void	free_map(char **map)
 
 	i = 0;
 	while (map[i])
-	{
 		free(map[i++]);
-	}
 	free(map);
 }

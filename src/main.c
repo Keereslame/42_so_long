@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 11:18:31 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:14:01 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ int	main(int argc, char **argv)
 	(void)argv;
 	(void)argc;
 	ft_memset(&game, 0, sizeof(t_game));
-	if (!create_map(&game, "map/map1.ber"))
-	{
-		ft_printf("Error\nInvalid map\n");
-		return (free_map(game.map), 1);
-	}
-	print_map(&game);
+	if (!validate_map(&game,
+		"/home/alfavre/Documents/42_github/42_so_long/map/map1.ber"))
+		return (free_map(game.map), ft_printf("Error\nInvalid map\n"), 1);
+	print_map(game.map);
 	return (free_map(game.map), 0);
 	/*data.mlx_ptr = mlx_init();
 	if (!(data.mlx_ptr))
