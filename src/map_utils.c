@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:40:56 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 15:16:02 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:40:54 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	free_map(char **map)
 	int	i;
 
 	i = 0;
+	if (!map)
+		return ;
 	while (map[i])
 		free(map[i++]);
 	free(map);

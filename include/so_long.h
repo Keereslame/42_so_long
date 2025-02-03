@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 15:14:13 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:36:17 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
 # include <fcntl.h>
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+# define KEY_ESC 65307
 
 typedef struct s_flood
 {
@@ -81,6 +90,9 @@ int		validate_map(t_game *game, char *filename);
 void	free_map(char **map);
 void	print_map(char **map);
 int		get_map_height(char *file);
+
+void	setup_game_controls(t_game *game);
+void	update_position(t_game *game, int new_x, int new_y);
 
 int		on_destroy(t_game *data);
 int		on_keypress(int key_sym, t_game *data);
