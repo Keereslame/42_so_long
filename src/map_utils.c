@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:40:56 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 10:56:36 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:16:30 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_map_height(char *file)
 	height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		perror("Error to open the map's file");
+		return (perror("Error to open the map's file"), 0);
 	while (1)
 	{
 		buffer = get_next_line(fd);

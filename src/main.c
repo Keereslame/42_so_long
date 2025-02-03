@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 10:54:39 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:18:31 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	main(int argc, char **argv)
 
 	(void)argv;
 	(void)argc;
+	ft_memset(&game, 0, sizeof(t_game));
 	if (!create_map(&game, "map/map1.ber"))
 	{
 		ft_printf("Error\nInvalid map\n");
-		return (1);
+		return (free_map(game.map), 1);
 	}
 	print_map(&game);
-	free_map(game.map);
-	return (0);
+	return (free_map(game.map), 0);
 	/*data.mlx_ptr = mlx_init();
 	if (!(data.mlx_ptr))
 		return (perror("Mlx init() failed"), 1);
