@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:27:18 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 15:21:21 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 15:38:49 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	check_valid_path(t_game *game)
 	int		tot_collectibles;
 	int		valid;
 
-	valid = 1;
+	valid = 0;
 	flood.exit_found = 0;
 	flood.collectibles = 0;
 	flood.height = game->map_height;
@@ -69,8 +69,8 @@ static int	check_valid_path(t_game *game)
 	if (!flood.map)
 		return (0);
 	flood_fill(&flood, game->player.position.x, game->player.position.y);
-	if (!(flood.collectibles != tot_collectibles) && !flood.exit_found)
-		valid = 0;
+	if ((flood.collectibles == tot_collectibles) && flood.exit_found)
+		valid = 1;
 	free_map(flood.map);
 	return (valid);
 }
