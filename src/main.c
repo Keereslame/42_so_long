@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 10:42:09 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 10:54:39 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	(void)argv;
 	(void)argc;
-	if (!read_map(&game, "map/map1.ber"))
+	if (!create_map(&game, "map/map1.ber"))
 	{
 		ft_printf("Error\nInvalid map\n");
 		return (1);

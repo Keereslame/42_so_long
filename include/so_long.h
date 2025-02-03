@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 10:39:46 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/03 11:08:33 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_game
 	char		**map;
 	int			map_width;
 	int			map_height;
-	int			total_collectibles;
 	t_image		wall;
 	t_image		floor;
 	t_image		collect;
@@ -58,12 +57,17 @@ typedef struct s_game
 	int			exit_x;
 	int			exit_y;
 	int			game_over;
+	int			nb_player;
+	int			nb_exit;
+	int			nb_collectibles;
 }	t_game;
 
 int		on_destroy(t_game *data);
 int		on_keypress(int key_sym, t_game *data);
-int		read_map(t_game *game, char *filename);
+int		create_map(t_game *game, char *filename);
 void	free_map(char **map);
 void	print_map(t_game *game);
+int		get_map_height(char *file);
+int		check_map(t_game *game);
 
 #endif
