@@ -6,7 +6,7 @@
 #    By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 13:21:40 by alfavre           #+#    #+#              #
-#    Updated: 2025/02/03 17:18:02 by alfavre          ###   ########.fr        #
+#    Updated: 2025/02/04 08:01:45 by alfavre          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ endif
 SRC_FILES = main \
 			events \
 			map map_utils check_map validate_map \
-			movement
+			movement \
+			clean
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

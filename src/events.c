@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:44:22 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 17:33:41 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/04 08:12:54 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	on_keypress(int keycode, t_game *game)
 	int	x;
 	int	y;
 
-	ft_printf("Pressed key : %d\n", keycode);
 	x = game->player.position.x;
 	y = game->player.position.y;
 	if (game->game_over)
@@ -47,6 +46,12 @@ int	on_keypress(int keycode, t_game *game)
 	else
 		return (0);
 	update_position(game, x, y);
-	//render_game(game);
+	render_game(game);
+	if (game->game_over)
+	{
+		ft_printf("Congratulations! You won!\n");
+		cleanup(game);
+		exit(0);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 17:36:17 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/04 08:01:25 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,9 @@ void	update_position(t_game *game, int new_x, int new_y);
 
 int		on_destroy(t_game *data);
 int		on_keypress(int key_sym, t_game *data);
+
+void	clean_mlx(t_game *game);
+void	cleanup(t_game *game);
+int		error_handler(char *message, t_game *game);
 
 #endif
