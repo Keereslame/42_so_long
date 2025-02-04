@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/04 07:43:01 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:54:23 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 	game.mlx_ptr = mlx_init();
 	if (!(game.mlx_ptr))
 		return (perror("Mlx init() failed"), 1);
-	game.win_ptr = mlx_new_window(game.mlx_ptr, 500, 500, "so_long");
+	game.win_ptr = mlx_new_window(game.mlx_ptr, game.map_width * SCALE,
+		game.map_height * SCALE, "so_long");
 	if (!(game.win_ptr))
 		return (free(game.mlx_ptr), perror("Mlx new_window() failed"), 1);
 	setup_game_controls(&game);

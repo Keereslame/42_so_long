@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/04 08:01:25 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/04 15:50:51 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
+# define SCALE 42
 
 typedef struct s_flood
 {
@@ -34,7 +35,6 @@ typedef struct s_flood
 	int		collectibles;
 	int		exit_found;
 }	t_flood;
-
 
 typedef struct s_position
 {
@@ -81,7 +81,6 @@ typedef struct s_game
 	int			nb_collectibles;
 }	t_game;
 
-
 int		create_map(t_game *game, char *filename);
 int		read_map(t_game *game, char *filename);
 int		check_map(t_game *game);
@@ -100,5 +99,8 @@ int		on_keypress(int key_sym, t_game *data);
 void	clean_mlx(t_game *game);
 void	cleanup(t_game *game);
 int		error_handler(char *message, t_game *game);
+
+int		init_images(t_game *game);
+int		render_game(t_game *game);
 
 #endif
