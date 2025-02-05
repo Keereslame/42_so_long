@@ -9,7 +9,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "/home/alfavre/Documents/42_Lausanne/42_so_long/so_long",
-		"args": [],
+		"args": ["/home/alfavre/Documents/42_Lausanne/42_so_long/map/map1.ber"],
 		"stopAtEntry": false,
 		"cwd": "${fileDirname}",
 		"environment": [],

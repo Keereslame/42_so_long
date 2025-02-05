@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:27:18 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 15:38:49 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:06:41 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,20 @@ static char	**copy_map(char **original, int height)
 
 static void	flood_fill(t_flood *flood, int pos_x, int pos_y)
 {
+	if (flood->map[pos_y][pos_x] == 'E')
+		flood->exit_found = 1;
 	if (pos_x < 0 || pos_x > flood->width || pos_y < 0 || pos_y > flood->height
-		|| flood->map[pos_y][pos_x] == '1' || flood->map[pos_y][pos_x] == 'F')
+		|| flood->map[pos_y][pos_x] == '1' || flood->map[pos_y][pos_x] == 'F'
+		|| flood->map[pos_y][pos_x] == 'E')
 		return ;
 	if (flood->map[pos_y][pos_x] == 'C')
 		flood->collectibles++;
-	else if (flood->map[pos_y][pos_x] == 'E')
-		flood->exit_found = 1;
 	flood->map[pos_y][pos_x] = 'F';
 	flood_fill(flood, pos_x + 1, pos_y);
 	flood_fill(flood, pos_x, pos_y + 1);
 	flood_fill(flood, pos_x - 1, pos_y);
 	flood_fill(flood, pos_x, pos_y - 1);
+	print_map(flood->map);
 }
 
 static int	check_valid_path(t_game *game)

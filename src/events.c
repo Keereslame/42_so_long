@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:44:22 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/04 08:12:54 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/05 13:31:10 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	on_destroy(t_game *game)
 {
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
+	cleanup(game);
 	exit(0);
 	return (0);
 }
@@ -32,7 +30,7 @@ int	on_keypress(int keycode, t_game *game)
 		return (0);
 	if (keycode == KEY_ESC)
 	{
-		free_map(game->map);
+		cleanup(game);
 		exit(0);
 	}
 	else if (keycode == KEY_W || keycode == KEY_UP)

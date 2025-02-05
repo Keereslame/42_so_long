@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:17:48 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/04 07:43:40 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:42:53 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int	can_move(t_game *game, int new_x, int new_y)
 	{
 		game->player.collectibles++;
 		game->map[new_y][new_x] = '0';
+		if (game->player.collectibles == game->nb_collectibles)
+		{
+			game->exit.image = mlx_xpm_file_to_image(game->mlx_ptr,
+				"sprites/exit_open.xpm", &game->exit.width,
+				&game->exit.height);
+		}
 	}
 	else if (value == 'E')
 	{
@@ -38,12 +44,13 @@ void	update_position(t_game *game, int new_x, int new_y)
 {
 	if (can_move(game, new_x, new_y))
 	{
+		game->map[game->player.position.y][game->player.position.x] = '0';
 		game->player.position.x = new_x;
 		game->player.position.y = new_y;
+		game->map[game->player.position.y][game->player.position.x] = 'P';
 		game->player.moves++;
 		ft_printf("Moves: %d\n", game->player.moves);
 	}
-	print_map(game->map);
 }
 
 void	setup_game_controls(t_game *game)
