@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/05 11:55:29 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/06 20:26:46 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
-# define SCALE 42
+# define SCALE 32
+# define MIN_SCALE 16
+# define MAX_SACLE 64
 
 typedef struct s_flood
 {
@@ -79,6 +81,7 @@ typedef struct s_game
 	int			nb_player;
 	int			nb_exit;
 	int			nb_collectibles;
+	int			tile_size;
 }	t_game;
 
 int		create_map(t_game *game, char *filename);
