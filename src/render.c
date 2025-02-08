@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:03:35 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/06 20:27:28 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:43:39 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,12 @@ void	render_game(t_game *game)
 
 int	init_images(t_game *game)
 {
+	int	screen_width;
+	int	screen_height;
+
+	mlx_get_screen_size(game->mlx_ptr, &screen_width, &screen_height);
+	game->tile_size = min_size((screen_width * 0.8) / game->map_width,
+			(screen_height * 0.8) / game->map_height);
 	game->floor.image = mlx_xpm_file_to_image(game->mlx_ptr,
 			"sprites/floor.xpm", &game->floor.width, &game->floor.height);
 	game->wall.image = mlx_xpm_file_to_image(game->mlx_ptr,

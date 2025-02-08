@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/06 20:26:46 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:48:19 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ int		error_handler(char *message, t_game *game);
 
 int		init_images(t_game *game);
 void	render_game(t_game *game);
+int		min_size(size_t a, size_t b);
 
 #endif
