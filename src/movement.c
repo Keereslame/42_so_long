@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 17:17:48 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 11:51:22 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 14:28:23 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	update_position(t_game *game, int new_x, int new_y)
 		game->player.position.y = new_y;
 		game->map[game->player.position.y][game->player.position.x] = 'P';
 		game->player.moves++;
-		ft_printf("Moves: %d\n", game->player.moves);
+		//ft_printf("Moves: %d\n", game->player.moves);
 	}
 }
 
