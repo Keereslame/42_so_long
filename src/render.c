@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:03:35 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 11:49:14 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 12:32:43 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	put_image(t_game *game, void *img, int x, int y)
 		img, x * game->tile_size, y * game->tile_size);
 }
 
-/*static void	draw_floor(t_game *game)
+static void	draw_floor(t_game *game)
 {
 	int	x;
 	int	y;
@@ -30,7 +30,7 @@ static void	put_image(t_game *game, void *img, int x, int y)
 		while (++x < game->map_width)
 			put_image(game, game->floor.image, x, y);
 	}
-}*/
+}
 
 static void	display_moves(t_game *game)
 {

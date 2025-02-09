@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:28:11 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 11:55:06 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 12:31:00 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	init_images(t_game *game)
 	game->wall.image = mlx_xpm_file_to_image(game->mlx_ptr,
 			"sprites/wall.xpm", &game->wall.width, &game->wall.height);
 	game->player.image.image = mlx_xpm_file_to_image(game->mlx_ptr,
-			"sprites/player_1.xpm", &game->player.image.width,
+			"sprites/player_walk.xpm", &game->player.image.width,
 			&game->player.image.height);
 	game->collect.image = mlx_xpm_file_to_image(game->mlx_ptr,
 			"sprites/collectible.xpm", &game->collect.width,
