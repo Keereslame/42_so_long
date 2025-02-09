@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:27:18 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/05 14:06:41 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 11:16:04 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static void	flood_fill(t_flood *flood, int pos_x, int pos_y)
 	flood_fill(flood, pos_x, pos_y + 1);
 	flood_fill(flood, pos_x - 1, pos_y);
 	flood_fill(flood, pos_x, pos_y - 1);
-	print_map(flood->map);
 }
 
 static int	check_valid_path(t_game *game)

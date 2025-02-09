@@ -6,31 +6,27 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:28:11 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/07 17:46:18 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 11:55:06 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*scale_image(t_game *game, void *original)
+int	init_images(t_game *game)
 {
-	void	*new_image;
-	size_t	new_width;
-	size_t	new_height;
-
-	new_width = (game->map_width * WINDOW_WIDTH)
-		/ (game->map_width * ORIGINAL__TILE_SIZE);
-	new_height = (game->map_height * WINDOW_HEIGHT)
-		/ (game->map_height * ORIGINAL__TILE_SIZE);
-	new_image = mlx_new_image(game->mlx_ptr, new_width, new_height);
-	mlx_put_image_to_window(game->mlx_ptr, new_image, original, 0, 0);
-	return (new_image);
-}
-
-int	min_size(size_t a, size_t b)
-{
-	if (a < b)
-		return (a);
-	else
-		return (b);
+	game->floor.image = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/floor.xpm", &game->floor.width, &game->floor.height);
+	game->wall.image = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/wall.xpm", &game->wall.width, &game->wall.height);
+	game->player.image.image = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/player_1.xpm", &game->player.image.width,
+			&game->player.image.height);
+	game->collect.image = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/collectible.xpm", &game->collect.width,
+			&game->collect.height);
+	game->exit.image = mlx_xpm_file_to_image(game->mlx_ptr,
+			"sprites/exit_close.xpm", &game->exit.width,
+			&game->exit.height);
+	return (game->floor.image && game->wall.image && game->player.image.image
+		&& game->collect.image && game->exit.image);
 }
