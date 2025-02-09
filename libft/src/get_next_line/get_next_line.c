@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:11:39 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/03 10:10:09 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 20:35:15 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ static char	*ft_rest(char *buffer)
 	if (!buffer[index])
 		return (free(buffer), NULL);
 	size = ft_strlen(buffer) - index - 1;
+	if (size == 0)
+		return (free(buffer), NULL);
 	rest = malloc(sizeof(char) * (size + 1));
 	if (!rest)
 		return (free(buffer), NULL);

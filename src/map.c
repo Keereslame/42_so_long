@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 15:55:48 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 18:06:10 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/09 20:44:20 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	read_map(t_game *game, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (free_map(game->map), perror("Error\nError to open the file"), 0);
+		return (cleanup(game), perror("Error\nError to open the file"), 0);
 	i = 0;
 	while (i < game->map_height)
 	{
@@ -29,7 +29,7 @@ int	read_map(t_game *game, char *filename)
 			break ;
 		game->map[i] = ft_strtrim(buffer, "\n");
 		if (!(game->map[i]))
-			return (free(buffer), free_map(game->map),
+			return (free(buffer), cleanup(game),
 				perror("Error\nAllocation failed"), 0);
 		free(buffer);
 		i++;
