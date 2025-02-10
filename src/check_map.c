@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:57:03 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 18:21:01 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 13:44:50 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,13 @@ static int	check_walls(char **map, int height)
 
 int	check_map(t_game *game)
 {
-	return (check_rectangle(game->map)
-		&& check_map_content(game)
-		&& check_walls(game->map, game->map_height));
+	if (!check_rectangle(game->map))
+		return (ft_printf("Error\nThe map isn't rectangle!\n"), 0);
+	if (!check_map_content(game))
+		return (ft_printf("Error\n"),
+			ft_printf("The map must have a player (P), an exit (E), "),
+			ft_printf("and at least one collectible\n"), 0);
+	if (!check_walls(game->map, game->map_height))
+		return (ft_printf("Error\nThe map must be totaly closed by wall!\n"), 0);
+	return (1);
 }

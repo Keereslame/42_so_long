@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:27:18 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 15:46:03 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 13:46:31 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int	validate_map(t_game *game, char *filename)
 	if (!check_map(game))
 		return (0);
 	if (!check_valid_path(game))
-		return (0);
+		return (ft_printf("Error\nThe exit isn't reachable!\n"), 0);
 	return (1);
 }
