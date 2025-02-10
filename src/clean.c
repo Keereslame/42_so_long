@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 07:47:51 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/04 08:02:38 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:25:05 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,4 @@ void	cleanup(t_game *game)
 	if (game->map)
 		free_map(game->map);
 	clean_mlx(game);
-}
-
-int	error_handler(char *message, t_game *game)
-{
-	if (message)
-		ft_printf("%s", message);
-	cleanup(game);
-	return (1);
 }

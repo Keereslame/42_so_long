@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:25:57 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 18:20:07 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:25:05 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
-# define MIN_SCALE 16
-# define MAX_SACLE 64
+# define TILE_SIZE 64
 
 typedef struct s_flood
 {
@@ -46,10 +45,6 @@ typedef struct s_position
 typedef struct s_image
 {
 	void	*image;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 	int		width;
 	int		height;
 }	t_image;
@@ -74,40 +69,44 @@ typedef struct s_game
 	t_image		collect;
 	t_image		exit;
 	t_player	player;
-	int			exit_x;
-	int			exit_y;
 	int			game_over;
 	int			nb_player;
 	int			nb_exit;
 	int			nb_collectibles;
-	int			tile_size;
 	int			win_width;
 	int			win_height;
 }	t_game;
 
+/*map*/
 int		create_map(t_game *game, char *filename);
 int		read_map(t_game *game, char *filename);
 int		check_map(t_game *game);
 int		validate_map(t_game *game, char *filename);
 
+/*map_utils*/
 void	free_map(char **map);
 void	print_map(char **map);
 int		get_map_height(char *file);
 
+/*movements*/
 void	setup_game_controls(t_game *game);
 void	update_position(t_game *game, int new_x, int new_y);
 
+/*events*/
 int		on_destroy(t_game *data);
 int		on_keypress(int key_sym, t_game *data);
 
+/*clean*/
 void	clean_mlx(t_game *game);
 void	cleanup(t_game *game);
-int		error_handler(char *message, t_game *game);
 
+/*image*/
 int		init_images(t_game *game);
 
+/*render*/
 void	render_game(t_game *game);
 
+/*window*/
 int		init_window(t_game *game);
 
 #endif

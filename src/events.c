@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:44:22 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 16:50:34 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:32:49 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	on_keypress(int keycode, t_game *game)
 	if (game->game_over)
 		return (0);
 	if (keycode == KEY_ESC)
-		return (cleanup(game), exit(0), 0);
+		return (on_destroy(game), 0);
 	else if (keycode == KEY_W || keycode == KEY_UP)
 		y--;
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
@@ -43,7 +43,6 @@ int	on_keypress(int keycode, t_game *game)
 	update_position(game, x, y);
 	render_game(game);
 	if (game->game_over)
-		return (ft_printf("Congratulations! You won!\n"), cleanup(game),
-			exit(0), 0);
+		return (ft_printf("Congratulations! You won!\n"), on_destroy(game), 0);
 	return (0);
 }

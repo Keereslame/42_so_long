@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 13:33:26 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 18:19:51 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 15:23:02 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static int	game_init(t_game *game, char *filename)
 {
 	init_game_struct(game);
 	if (!validate_map(game, filename))
-		return (cleanup(game), ft_printf("Error\nMap no valid\n"), 0);
+		return (cleanup(game), ft_printf("Map no valid\n"), 0);
 	if (!init_window(game))
-		return (cleanup(game), ft_printf("Error\nWindow error\n"), 0);
+		return (cleanup(game), ft_printf("Window error\n"), 0);
 	if (!init_images(game))
 		return (cleanup(game), ft_printf("Error\nImage error\n"), 0);
 	return (1);
@@ -38,13 +38,15 @@ static int	game_init(t_game *game, char *filename)
 int	main(int argc, char **argv)
 {
 	t_game	game;
+	char	*extension;
 
 	if (argc != 2)
 		return (ft_printf("Error\nNeed: ./so_long map.ber\n"), 1);
-	if (!ft_strncmp(ft_strrchr(argv[1], '.'), ".ber", 4) == 0)
-		return (ft_printf("Error\nInvalid map extension\n"), 1);
+	extension = ft_strrchr(argv[1], '.');
+	if (!extension || (!ft_strncmp(extension, ".ber", 4) == 0))
+		return (ft_printf("Error\nInvalid map extension. Must be a .ber\n"), 1);
 	if (!game_init(&game, argv[1]))
-		return (ft_printf("Error\nImpossible to create the game\n"), 1);
+		return (ft_printf("Impossible to create the game\n"), 1);
 	render_game(&game);
 	setup_game_controls(&game);
 	mlx_loop(game.mlx_ptr);

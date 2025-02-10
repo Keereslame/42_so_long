@@ -6,7 +6,7 @@
 /*   By: alfavre <alfavre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 14:03:35 by alfavre           #+#    #+#             */
-/*   Updated: 2025/02/09 14:35:12 by alfavre          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:19:40 by alfavre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	put_image(t_game *game, void *img, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		img, x * game->tile_size, y * game->tile_size);
+		img, x * TILE_SIZE, y * TILE_SIZE);
 }
 
 static void	display_moves(t_game *game)
